@@ -1,0 +1,56 @@
+START
+
+CREATE array months containing January through December
+CREATE array temperatures containing 12 monthly average temperatures
+
+DISPLAY "Enter a month or enter year:"
+INPUT userChoice
+
+IF userChoice equals "year"
+
+    SET totalTemperature = 0
+    SET highestTemperature = first temperature
+    SET lowestTemperature = first temperature
+
+    FOR each month in the arrays
+
+        DISPLAY month and temperature
+
+        ADD temperature to totalTemperature
+
+        IF temperature > highestTemperature
+            SET highestTemperature = temperature
+        END IF
+
+        IF temperature < lowestTemperature
+            SET lowestTemperature = temperature
+        END IF
+
+    END FOR
+
+    SET yearlyAverage = totalTemperature / number of months
+
+    DISPLAY yearlyAverage
+    DISPLAY highestTemperature
+    DISPLAY lowestTemperature
+
+ELSE
+
+    SET monthFound = false
+
+    FOR each month in months
+
+        IF userChoice matches month
+            DISPLAY month and temperature
+            SET monthFound = true
+        END IF
+
+    END FOR
+
+    IF monthFound = false
+        DISPLAY "Invalid month"
+    END IF
+
+END IF
+
+END
